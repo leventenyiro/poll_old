@@ -12,7 +12,9 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-require("./app/routes/poll.route")(app)
+app.use("/poll", require("./app/routes/poll.route"))
+app.use("/question", require("./app/routes/question.route"))
+app.use("/answer", require("./app/routes/answer.route"))
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {

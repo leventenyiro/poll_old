@@ -1,8 +1,8 @@
 const conn = require("./db")
 
 const Poll = function(poll) {
-    this.question = poll.question
-    this.answers = poll.answers // list key=>value
+    this.title = poll.title
+    this.answer = poll.answer
 }
 
 Poll.getNameById = (id, result) => {
@@ -24,10 +24,9 @@ Poll.getNameById = (id, result) => {
 }
 
 Poll.getPollById = (id, result) => {
-    var sql = `SELECT a.answer, count(a.id) AS votes FROM poll p
-        INNER JOIN answer a ON p.answer_id = a.id
-        WHERE a.question_id = ${id}
-        GROUP BY a.id`
+    var sql = `SELECT a.title, (SELECT COUNT(*) FROM poll p WHERE answer_id = a.id) AS count 
+            FROM answer a
+            WHERE a.question_id = 3`
     
         conn.query(sql, (err, res) => {
             if (err) {
@@ -38,13 +37,5 @@ Poll.getPollById = (id, result) => {
             result(null, res)
         })
 }
-
-/*
-SELECT q.id, q.text, a.answer, count(a.id) FROM poll p
-INNER JOIN answer a ON p.answer_id = a.id
-INNER JOIN question q ON a.question_id = q.id
-WHERE a.question_id = 1
-GROUP BY a.id
-*/
 
 module.exports = Poll

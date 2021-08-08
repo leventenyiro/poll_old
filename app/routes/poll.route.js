@@ -1,5 +1,6 @@
-module.exports = app => {
-    const poll = require("../controllers/poll.controller")
+const router = require("express").Router()
+const poll = require("../controllers/poll.controller")
 
-    app.get("/poll/:id", poll.getById)
-}
+router.get("/:id", poll.getById)
+
+module.exports = router

@@ -1,9 +1,3 @@
-/*
-    POST question
-    GET question and answers by id
-    GET your choice by cookie
-*/
-
 const Poll = require("../models/poll.model")
 
 exports.getById = (req, res) => {
