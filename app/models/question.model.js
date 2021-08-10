@@ -5,12 +5,12 @@ const Question = function(question) {
 }
 
 Question.create = (question, result) => {
-    conn.query("INSERT INTO question SET ?", question, (err) => {
+    conn.query("INSERT INTO question SET ?", question, (err, res) => {
         if (err) {
             result(err, null)
             return
         }
-        result(null)
+        result(null, res)
     })
 }
 

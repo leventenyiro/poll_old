@@ -10,14 +10,15 @@ exports.create = (req, res) => {
             title: req.body.title
         })
         
-        Question.create(question, (err) => {
+        Question.create(question, (err, data) => {
             if (err)
                 res.status(500).send({
                     error: "Server error"
                 })
             else
                 res.send({
-                    success: "Successful create"
+                    success: "Successful create",
+                    insertId: data.insertId
                 })
         })
     }
