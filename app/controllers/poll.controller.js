@@ -26,3 +26,22 @@ exports.getById = (req, res) => {
         }
     })
 }
+
+exports.create = (req, res) => {
+    if (req.body.answerId == "" || req.body.answerId == undefined)
+        res.status(400).send({
+            error: "Something is missing"
+        })
+    else {
+        Poll.create(req.body.answerId, (err) => {
+            if (err)
+                res.status(500).send({
+                    error: "Server error"
+                })
+            else
+                res.send({
+                    success: "Successful vote"
+                })
+        })
+    }
+}

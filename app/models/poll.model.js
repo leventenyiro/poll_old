@@ -31,14 +31,25 @@ Poll.getPollById = (id, result) => {
             FROM answer a
             WHERE a.question_id = ${id}`
     
-        conn.query(sql, (err, res) => {
-            if (err) {
-                result(err, null)
-                return
-            }
+    conn.query(sql, (err, res) => {
+        if (err) {
+            result(err, null)
+            return
+        }
 
-            result(null, res)
-        })
+        result(null, res)
+    })
+}
+
+Poll.create = (id, result) => {
+    var sql = `INSERT INTO poll SET answer_id = ${id}`
+    conn.query(sql, (err) => {
+        if (err) {
+            result(err, null)
+            return
+        }
+        result(null)
+    })
 }
 
 module.exports = Poll

@@ -5,7 +5,7 @@ const Question = function(question) {
 }
 
 Question.create = (question, result) => {
-    conn.query("INSERT INTO question SET ?", question, (err, res) => {
+    conn.query("INSERT INTO question SET ?", question, (err) => {
         if (err) {
             result(err, null)
             return
