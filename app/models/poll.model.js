@@ -27,7 +27,7 @@ Poll.getNameById = (id, result) => {
 }
 
 Poll.getPollById = (id, result) => {
-    var sql = `SELECT a.title, (SELECT COUNT(*) FROM poll p WHERE answer_id = a.id) AS count 
+    var sql = `SELECT a.id, a.title, (SELECT COUNT(*) FROM poll p WHERE answer_id = a.id) AS count 
             FROM answer a
             WHERE a.question_id = ${id}`
     

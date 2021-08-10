@@ -15,4 +15,36 @@ Answer.create = (answer, result) => {
     })
 }
 
+Answer.update = (id, answer, result) => {
+    conn.query(`UPDATE answer SET title = ${question.title}, question_id = ${answer.question_id} WHERE id = ${id}`, (err, res) => {
+        if (err) {
+            result(err)
+            return
+        }
+        
+        if (res.affectedRows == 0) {
+            result({ kind: "not_found" })
+            return
+        }
+
+        result(null)
+    })
+}
+
+Answer.delete = (id, result) => {
+    conn.query(`DELETE FROM answer WHERE id = ${id}`, (err, res) => {
+        if (err) {
+            result(err)
+            return
+        }
+
+        if (res.affectedRows == 0) {
+            result({ kind: "not_found" })
+            return
+        }
+
+        result(null)
+    })
+}
+
 module.exports = Answer
