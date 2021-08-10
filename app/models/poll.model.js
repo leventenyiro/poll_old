@@ -6,7 +6,10 @@ const Poll = function(poll) {
 }
 
 Poll.getNameById = (id, result) => {
-    var sql = `SELECT * FROM question WHERE id = ${id}`
+    var sql = `SELECT q.id, q.title, COUNT(*) AS votes FROM poll p
+        LEFT JOIN answer a ON p.answer_id = a.id
+        LEFT JOIN question q ON a.question_id = q.id
+        WHERE q.id = ${id}`
     
     conn.query(sql, (err, res) => {
         if (err) {
@@ -26,7 +29,7 @@ Poll.getNameById = (id, result) => {
 Poll.getPollById = (id, result) => {
     var sql = `SELECT a.title, (SELECT COUNT(*) FROM poll p WHERE answer_id = a.id) AS count 
             FROM answer a
-            WHERE a.question_id = 3`
+            WHERE a.question_id = ${id}`
     
         conn.query(sql, (err, res) => {
             if (err) {
