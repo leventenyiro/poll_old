@@ -5,7 +5,7 @@ exports.getById = (req, res) => {
         if (err) {
             if (err.kind === "not_found")
                 res.status(404).send({
-                    error: "No poll with id"
+                    error: "No poll with id",
                 })
             else
                 res.status(500).send({
@@ -28,20 +28,14 @@ exports.getById = (req, res) => {
 }
 
 exports.create = (req, res) => {
-    if (req.body.answerId == "" || req.body.answerId == undefined)
-        res.status(400).send({
-            error: "Something is missing"
-        })
-    else {
-        Poll.create(req.body.answerId, (err) => {
-            if (err)
-                res.status(500).send({
-                    error: "Server error"
-                })
-            else
-                res.send({
-                    success: "Successful vote"
-                })
-        })
-    }
+    Poll.create(req.params.answerId, (err) => {
+        if (err)
+            res.status(500).send({
+                error: "Server error"
+            })
+        else
+            res.send({
+                success: "Successful vote"
+            })
+    })
 }

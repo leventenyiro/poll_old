@@ -17,12 +17,12 @@ Poll.getNameById = (id, result) => {
             return
         }
 
-        if (res.length) {
-            result(null, res[0])
+        if (res.id == null) {
+            result({ kind: "not_found" }, null)
             return
         }
 
-        result({ kind: "not_found" }, null)
+        result(null, res[0])
     })
 }
 
@@ -41,8 +41,8 @@ Poll.getPollById = (id, result) => {
     })
 }
 
-Poll.create = (id, result) => {
-    var sql = `INSERT INTO poll SET answer_id = ${id}`
+Poll.create = (answerId, result) => {
+    var sql = `INSERT INTO poll SET answer_id = ${answerId}`
     conn.query(sql, (err) => {
         if (err) {
             result(err, null)
