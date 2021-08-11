@@ -1,13 +1,13 @@
 const Answer = require("../models/answer.model")
 
 exports.create = (req, res) => {
-    if (req.body.title == "" || req.body.title == undefined)
+    if (req.body.title == "" || req.body.title == undefined || req.body.questionId == "" || req.body.questionId == undefined)
         res.status(400).send({
             error: "Something is missing"
         })
     else {
         const answer = new Answer({
-            questionId: req.params.questionId,
+            questionId: req.body.questionId,
             title: req.body.title
         })
         Answer.create(answer, (err) => {

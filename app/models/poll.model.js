@@ -52,4 +52,36 @@ Poll.create = (answerId, result) => {
     })
 }
 
+Poll.update = (id, answerId, result) => {
+    conn.query(`UPDATE poll SET answer_id = ${answerId} WHERE id = ${id}`, (err, res) => {
+        if (err) {
+            result(err)
+            return
+        }
+        
+        if (res.affectedRows == 0) {
+            result({ kind: "not_found" })
+            return
+        }
+
+        result(null)
+    })
+}
+
+Poll.delete = (id, result) => {
+    conn.query(`DELETE FROM poll WHERE id = ${id}`, (err, res) => {
+        if (err) {
+            result(err)
+            return
+        }
+
+        if (res.affectedRows == 0) {
+            result({ kind: "not_found" })
+            return
+        }
+
+        result(null)
+    })
+}
+
 module.exports = Poll
