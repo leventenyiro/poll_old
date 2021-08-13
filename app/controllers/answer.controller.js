@@ -30,7 +30,6 @@ exports.update = (req, res) => {
         })
     else {
         const answer = new Answer({
-            questionId: req.params.questionId,
             title: req.body.title
         })
 
