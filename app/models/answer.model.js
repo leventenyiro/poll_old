@@ -17,7 +17,6 @@ Answer.create = (answer, result) => {
 
 Answer.update = (id, answer, result) => {
     conn.query(`UPDATE answer SET title = "${answer.title}" WHERE id = ${id}`, (err, res) => {
-        console.log(err)
         if (err) {
             result(err)
             return

@@ -20,7 +20,7 @@ exports.create = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    if (req.body.answerId == "" || req.body.answerId)
+    if (req.body.answerId == "" || req.body.answerId == undefined)
         res.status(400).send({
             error: "Something is missing"
         })

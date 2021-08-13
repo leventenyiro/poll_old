@@ -2,19 +2,20 @@
 
 ## Question
 
--GET: question/:id
--POST: question/
--PUT: question/:id
--DELETE: question/:id
+- [x] GET: question/
+- [x] GET: question/:id
+- [x] POST: question/ - title
+- [x] PUT: question/:id - title
+- [x] DELETE: question/:id
 
 ## Answer
 
--POST: answer/
--PUT: answer/:id
-DELETE: answer/:id
+- [x] POST: answer/ - title, questionId
+- [x] PUT: answer/:id
+- [x] DELETE: answer/:id
 
 ## Poll
 
-POST: poll/
-PUT: poll/:id
-DELETE: poll/:id
+- [x] POST: poll/ - answerId
+- [x] PUT: poll/:id
+- [x] DELETE: poll/:id
