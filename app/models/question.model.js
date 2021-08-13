@@ -27,10 +27,10 @@ Question.getNameById = (id, result) => {
             return
         }
 
-        //if (res.id === null) {
+        if (res[0].id === null) {
             result({ kind: "not_found" }, null)
             return
-        //}
+        }
 
         result(null, res[0])
     })
