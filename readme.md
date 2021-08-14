@@ -17,5 +17,9 @@
 ## Poll
 
 - [x] POST: poll/ - answerId
-- [x] PUT: poll/:id
+- [x] PUT: poll/:id - answerId
 - [x] DELETE: poll/:id
+
+
+
+https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/
