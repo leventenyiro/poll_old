@@ -1,22 +1,21 @@
+import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
 function App() {
   const [data, setData] = useState(null)
-  
+
   useEffect(() => {
-    fetch("/question/")
-    .then(res => {
-      return res.json()
-    })
-    .then(inputData => {
-      setData(inputData[0])
-    })
-  }, [])
+    fetch("/question")
+    .then((res) => res.json())
+    .then((data) => setData(data))
+  })
   
   return (
     <div className="App">
-      <h1>{ data.title }</h1>
+      <header className="App-header">
+        <p>{ !data ? "Loading..." : data[0].title }</p>
+      </header>
     </div>
   );
 }

@@ -8,7 +8,7 @@ var corsOptions = {
     //origin: "http://localhost:8080"
 }
 
-app.use(express.static(path.resolve(__dirname, '../client/web/public')))
+app.use(express.static(path.resolve(__dirname, './client/web/build')))
 
 app.use(cors(corsOptions))
 app.use(express.json())
@@ -19,7 +19,7 @@ app.use("/question", require("./app/routes/question.route"))
 app.use("/answer", require("./app/routes/answer.route"))
 
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./client/web/build", 'index.html'))
+    res.sendFile(path.resolve(__dirname, './client/web/build', 'index.html'))
 })
 
 const PORT = process.env.PORT || 3001
