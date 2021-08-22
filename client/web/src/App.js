@@ -15,6 +15,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>{ !data ? "Loading..." : data[0].title }</p>
+        <p>{ !data ? "Loading..." : data[0].id }</p>
       </header>
     </div>
   );
