@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import PollDetails from './PollDetails';
 import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
-  const [data, setData] = useState(null)
+  /*const [data, setData] = useState(null)
 
   useEffect(() => {
     fetch("/question")
     .then((res) => res.json())
     .then((data) => setData(data))
-  })
+  })*/
   
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>{ !data ? "Loading..." : data[0].title }</p>
-        <p>{ !data ? "Loading..." : data[0].id }</p>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <div>Home</div>
+          </Route>
+
+          <Route path="/:id">
+            <PollDetails />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
