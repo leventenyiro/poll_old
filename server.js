@@ -18,9 +18,9 @@ app.use("/poll", require("./app/routes/poll.route"))
 app.use("/question", require("./app/routes/question.route"))
 app.use("/answer", require("./app/routes/answer.route"))
 
-app.get("*", (req, res) => {
+/*app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, './client/web/build', 'index.html'))
-})
+})*/
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
